@@ -1,4 +1,4 @@
-from fedora:38 as builder
+FROM fedora:38 as builder
 RUN dnf install -y \
 	gcc \
 	g++ \
@@ -12,7 +12,7 @@ RUN wget https://boostorg.jfrog.io/artifactory/main/release/1.82.0/source/boost_
 	./b2 install --without-python
 RUN rm -Rf /root/Temp
 
-from fedora:38
+FROM fedora:38
 RUN dnf install -y \
 	cmake \
 	git \
@@ -24,7 +24,8 @@ RUN dnf install -y \
 	libasan \
 	libubsan \
 	clang-tools-extra \
-	openssl-devel
+	openssl-devel \
+	libmodbus-devel
 RUN dnf clean all && rm -rf /var/cache/yum
 
 # install boost from builder image
