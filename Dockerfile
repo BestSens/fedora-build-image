@@ -1,18 +1,18 @@
-FROM fedora:38 as builder
+FROM fedora:39 as builder
 RUN dnf install -y \
 	gcc \
 	g++ \
 	wget \
 	openssl-devel
 RUN mkdir /root/Temp && cd /root/Temp
-RUN wget https://boostorg.jfrog.io/artifactory/main/release/1.82.0/source/boost_1_82_0.tar.gz -P /root/Temp && \
-	tar -xzf /root/Temp/boost_1_82_0.tar.gz -C /root/Temp && \
-	cd /root/Temp/boost_1_82_0 && \
+RUN wget https://boostorg.jfrog.io/artifactory/main/release/1.84.0/source/boost_1_84_0.tar.gz -P /root/Temp && \
+	tar -xzf /root/Temp/boost_1_84_0.tar.gz -C /root/Temp && \
+	cd /root/Temp/boost_1_84_0 && \
 	./bootstrap.sh && \
 	./b2 install --without-python
 RUN rm -Rf /root/Temp
 
-FROM fedora:38
+FROM fedora:39
 RUN dnf install -y \
 	cmake \
 	git \
