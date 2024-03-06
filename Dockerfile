@@ -13,6 +13,7 @@ RUN wget https://boostorg.jfrog.io/artifactory/main/release/1.84.0/source/boost_
 RUN rm -Rf /root/Temp
 
 FROM fedora:39
+RUN curl -fsSL https://rpm.nodesource.com/setup_21.x | bash -
 RUN dnf install -y \
 	cmake \
 	git \
@@ -25,8 +26,9 @@ RUN dnf install -y \
 	libubsan \
 	clang-tools-extra \
 	openssl-devel \
-	libmodbus-devel
-RUN dnf clean all && rm -rf /var/cache/yum
+	libmodbus-devel \
+	nodejs && \
+	dnf clean all && rm -rf /var/cache/yum
 
 # install boost from builder image
 COPY --from=builder /usr/local/lib/libboost* /usr/local/lib/
