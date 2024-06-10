@@ -13,7 +13,7 @@ RUN wget https://boostorg.jfrog.io/artifactory/main/release/1.85.0/source/boost_
 RUN rm -Rf /root/Temp
 
 FROM fedora:40
-RUN curl -fsSL https://rpm.nodesource.com/setup_21.x | bash -
+RUN curl -fsSL https://rpm.nodesource.com/setup_22.x | bash -
 RUN dnf install -y \
 	cmake \
 	git \
