@@ -14,5 +14,6 @@ RUN dnf install -y \
 	openssl-devel \
 	libmodbus-devel \
 	boost \
+	boost-devel \
 	nodejs && \
 	dnf clean all && rm -rf /var/cache/yum
